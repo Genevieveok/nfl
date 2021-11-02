@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>NFL</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+      
+    />
+
+  </head>
+  <body>
+    <div class="container">
+      
+    <table class="table">
+      <thead>
+          <tr>
+            {# Table heads #}
+              <th>Player</th>
+              <th>Team</th>
+              <th>Pos</th>
+              <th>Att/G</th>
+              <th>Att</th>
+              <th>Yds</th>
+              <th>Avg</th>
+              <th>Yds/G</th>
+              <th>TD</th>
+              <th>Lng</th>
+              <th>1st</th>
+              <th>1st%</th>
+              <th>20+</th>
+              <th>40+</th>
+              <th>FUM</th>
+          <tr>
+      </thead>
+      <tbody>
+
+        {% for person in jsonfile%}
+        {# table with info for all the players #}
+        {# person is a dict gotten from the jsonfile list #}
+        <tr>
+        <td>{{ person['Player'] }}</td>
+        <td>{{ person['Team']}}</td>
+        <td>{{ person['Pos'] }}</td>
+        <td>{{ person['Att/G'] }}</td>
+        <td>{{ person['Att'] }}</td>
+        <td>{{ person['Yds'] }}</td>
+        <td>{{ person['Avg'] }}</td>
+        <td>{{ person['Yds/G'] }}</td>
+        <td>{{ person['TD'] }}</td>
+        <td>{{ person['Lng'] }}</td>
+        <td>{{ person['1st']}}</td>
+        <td>{{ person['1st%'] }}</td>
+        <td>{{ person['20+'] }}</td>
+        <td>{{ person['40+'] }}</td>
+        <td>{{ person['FUM'] }}</td>
+
+
+           
+        </tr>
+       
+        
+        {% endfor %}
+          
+      </tbody>
+  </table>
+  </div>
+  </body>
+</html>
