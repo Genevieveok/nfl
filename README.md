@@ -54,4 +54,29 @@ We will evaluate you on your ability to solve the problem defined in the require
 If you have any questions regarding requirements, do not hesitate to email your contact at theScore for clarification.
 
 ### Installation and running this solution
-... TODO
+
+Installations would work with python3 or pip3 depending on version.
+
+#### Dependencies
+##### Install dependencies for flask framework 
+`pip install -r requirements.txt` or `pip3 install -r requirements.txt` for python3
+
+##### Install virtualenv, if needed
+`pip install virtualenv`
+
+##### Name virtualenv
+`virtualenv nameofvirtualenv`
+
+##### Activate virtualenv 
+`source nameofvirtualenv/bin/activate`
+
+#### Run app.py from nfl directory
+`python app.py` 
+
+The following details should be displayed after you run app.py:
+![alt text](flaskinfo.png "Logo Title Text 1")
+
+#### Go to localhost link to view nfl rush table
+`http://127.0.0.1:5000/`
+
+
