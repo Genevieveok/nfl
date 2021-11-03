@@ -58,8 +58,10 @@ If you have any questions regarding requirements, do not hesitate to email your 
 Installations would work with python3 or pip3 depending on version.
 
 #### Dependencies
+Python needs to be installed as well as flask framework details for this to run. I have included the requirements file and I'll also include some details on requirements and virtualenv installation below.
+
 ##### Install dependencies for flask framework 
-`pip install -r requirements.txt` or `pip3 install -r requirements.txt` for python3
+`pip install -r requirements.txt` 
 
 ##### Install virtualenv, if needed
 `pip install virtualenv`
@@ -74,9 +76,10 @@ Installations would work with python3 or pip3 depending on version.
 `python app.py` 
 
 The following details should be displayed after you run app.py:
-![alt text](flaskinfo.png "Logo Title Text 1")
+![alt text](flaskinfo.png "flask server running")
 
 #### Go to localhost link to view nfl rush table
-`http://127.0.0.1:5000/`
+<http://127.0.0.1:5000/>
 
+![alt text](sample.png "web app sample")
 
