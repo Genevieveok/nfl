@@ -1,4 +1,4 @@
-from flask import Flask, json, render_template,request,jsonify
+from flask import Flask, json, render_template
 
 app = Flask(__name__,static_folder='./static')
 

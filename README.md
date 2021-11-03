@@ -58,7 +58,7 @@ If you have any questions regarding requirements, do not hesitate to email your 
 Installations would work with python3 or pip3 depending on version.
 
 #### Dependencies
-Python needs to be installed as well as flask framework details for this to run. I have included the requirements file and I'll also include some details on requirements and virtualenv installation below.
+Python needs to be installed as well as flask framework details for this to run. I've included the requirements file and also some details on requirements and virtualenv installation below.
 
 ##### Install dependencies for flask framework 
 `pip install -r requirements.txt` 
@@ -72,7 +72,7 @@ Python needs to be installed as well as flask framework details for this to run.
 ##### Activate virtualenv 
 `source nameofvirtualenv/bin/activate`
 
-#### Run app.py from nfl directory
+#### Run app.py from nfl/ directory
 `python app.py` 
 
 The following details should be displayed after you run app.py:
@@ -83,3 +83,7 @@ The following details should be displayed after you run app.py:
 
 ![alt text](sample.png "web app sample")
 
+Press CTRL+C to quit running the app
+
+##### Deactivate virtualenv when finished
+`deactivate`
