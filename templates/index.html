@@ -1,28 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="UTF-8" />
-    <title>NFL</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+{% extends "base.html" %} 
+{% block content %}
       
-    />
-
-  </head>
-  <body>
-    <div class="container">
-      
-    <table class="table">
+    <table id="tabs" class="table table-striped table-hover table-light">
       <thead>
-          <tr>
+        <style>
+          /*pagination, filter, length, info, download button custom css specificastions */
+          .pagination .page-item .page-link { background: #F0F0F0; padding: 10px 14px 10px 14px; border-style: outset;color: black;} 
+          .pagination .page-item .page-link:hover { background: #696969; color: white;} 
+          .pagination .page-item.active .page-link {  background:#B0B0B0; border-style: none;}
+          .downloadbutton{ background-color: #303030 !important; color: #ffffff !important; font-style: bold;}
+          .left-col {float: left;padding-bottom: 10px;padding-top: 10px;}
+          .clear {clear: left;width: 100%;}
+          .right-col {float: right;padding-bottom: 10px; padding-top: 10px;}
+        </style>
+          <tr class="table-primary">
             {# Table heads #}
               <th>Player</th>
               <th>Team</th>
               <th>Pos</th>
-              <th>Att/G</th>
               <th>Att</th>
+              <th>Att/G</th>
               <th>Yds</th>
               <th>Avg</th>
               <th>Yds/G</th>
@@ -33,39 +30,54 @@
               <th>20+</th>
               <th>40+</th>
               <th>FUM</th>
-          <tr>
+          </tr>
       </thead>
-      <tbody>
+ 
+    </table>
+{% endblock %}
+{% block scripts %}
+  <script>
+    
+    $(document).ready(function () {
+       $('#tabs').DataTable({
+        ajax: '/somedata',
+        "iDisplayLength": 50, //initial display length
+        "language": {
+            "infoFiltered": " ( _MAX_ entries in total )", //filtered info message change
+            "emptyTable": "No records available" //message for when json is empty
+            },
+        //order of elements
+        dom: '<"left-col"l><"right-col"f>rt<"left-col"i><"right-col"p><"clear"B>', 
+        //csv download details
+        buttons: [{
+            extend: 'csv',
+            className: "downloadbutton",
+            text: "Download CSV"
+        }],
+        //initial order setup
+        order: [[5, 'asc']],
+        //load data columns and specify what columns should searchable and orderable
+        columns: [
+          {data: 'Player',orderable: false, searchable: true},
+          {data: 'Team', orderable: false, searchable: false},
+          {data: 'Pos',orderable: false, searchable: false},
+          {data: 'Att',orderable: false, searchable: false},
+          {data: 'Att/G',orderable: false, searchable: false},
+          {data: 'Yds',orderable: true, searchable: false},
+          {data: 'Avg',orderable: false, searchable: false},
+          {data: 'Yds/G',orderable: false, searchable: false},
+          {data: 'TD',orderable: true, searchable: false},
+          //natural sorting. Ignores 'T' in Lng data and sorts based on number
+          {data: 'Lng',orderable: true, searchable: false,type: 'natural'},
+          {data: '1st',orderable: false, searchable: false},
+          {data: '1st%',orderable: false, searchable: false},
+          {data: '20+',orderable: false, searchable: false},
+          {data: '40+',orderable: false, searchable: false},
+          {data: 'FUM',orderable: false, searchable: false}],
+      
+      });
 
-        {% for person in jsonfile%}
-        {# table with info for all the players #}
-        {# person is a dict gotten from the jsonfile list #}
-        <tr>
-        <td>{{ person['Player'] }}</td>
-        <td>{{ person['Team']}}</td>
-        <td>{{ person['Pos'] }}</td>
-        <td>{{ person['Att/G'] }}</td>
-        <td>{{ person['Att'] }}</td>
-        <td>{{ person['Yds'] }}</td>
-        <td>{{ person['Avg'] }}</td>
-        <td>{{ person['Yds/G'] }}</td>
-        <td>{{ person['TD'] }}</td>
-        <td>{{ person['Lng'] }}</td>
-        <td>{{ person['1st']}}</td>
-        <td>{{ person['1st%'] }}</td>
-        <td>{{ person['20+'] }}</td>
-        <td>{{ person['40+'] }}</td>
-        <td>{{ person['FUM'] }}</td>
+    });
+  </script>
 
-
-           
-        </tr>
-       
-        
-        {% endfor %}
-          
-      </tbody>
-  </table>
-  </div>
-  </body>
-</html>
+{% endblock %}
